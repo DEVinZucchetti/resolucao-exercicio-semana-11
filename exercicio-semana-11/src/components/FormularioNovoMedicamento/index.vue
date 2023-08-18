@@ -1,17 +1,21 @@
 <template>
-  <div>
-    <h2>Formulário de Cadastro de medicamentos</h2>
+  <h2>Formulário de Cadastro de medicamentos</h2>
+  <div class="d-flex">
 
-    <label for="nome">Nome:</label>
-    <input type="text" id="nome" placeholder="Nome do medicamento" v-model="medicamento" />
+    <v-text-field 
+      label="Nome" 
+      class="w-25 px-2" 
+      type="text" 
+      variant="outlined" 
+      placeholder="Nome do medicamento" 
+      v-model="medicamento" 
+    />
 
-    <label for="laboratorio">Laboratório:</label>
-    <input type="text" id="laboratorio" placeholder="Nome do laboratório" v-model="laboratorio" />
+    <v-text-field label="Laboratório" class="w-25 px-2" type="text" variant="outlined" placeholder="Nome do laboratório" v-model="laboratorio" />
 
-    <label for="preco">Preço:</label>
-    <input type="number" id="preco" placeholder="Digite o preço" v-model="preco" />
+    <v-text-field label="Preço" type="number" class="w-25 px-2" variant="outlined" placeholder="Digite o preço" v-model="preco" />
 
-    <button @click="$emit('cadastrar', medicamento, laboratorio, preco)">Cadastrar</button>
+    <v-btn color="success" class="mt-1 me-2" size="large" @click="$emit('cadastrar', medicamento, laboratorio, preco)">Cadastrar</v-btn>
 
   </div>
 </template>
