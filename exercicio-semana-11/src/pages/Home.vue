@@ -1,4 +1,5 @@
 <template>
+  <router-link to="/novo-medicamento">+ medicamento</router-link>
   <div>
     <CardMedicamento 
       v-for="medicamento in listaMedicamentos" 
