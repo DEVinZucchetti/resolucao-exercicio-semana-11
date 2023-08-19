@@ -19,7 +19,7 @@
 -->
 
 <template>
-  <v-card elevation="5">
+  <v-card elevation="5" class="ma-3">
     <template v-slot:title>
       <div class="d-flex justify-end">
         <v-btn variant="text" :icon="favorito ? 'mdi-heart' : 'mdi-heart-outline'" color="'pink-lighten-1'" @click="$emit('favoritar', id)"></v-btn>

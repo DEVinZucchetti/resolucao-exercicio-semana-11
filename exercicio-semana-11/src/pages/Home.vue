@@ -5,7 +5,7 @@
     </router-link>
   </div>
   <div class="d-flex mx-5">
-    <CardMedicamento 
+    <CardMedicamento
       v-for="medicamento in listaMedicamentos" 
       :key="medicamento.id" 
       @favoritar="FavoritarMedicamento"
@@ -19,21 +19,14 @@
 
 <script>
 import CardMedicamento from "../components/CardMedicamento/index.vue"
+import axios from 'axios'
 export default {
   components: {
     CardMedicamento
   },
   data() {
     return {
-      listaMedicamentos: [
-        {
-          id: 1,
-          nome: 'Dorflex',
-          laboratorio: 'Clamed',
-          preco: 2,
-          favorito: false
-        }
-      ]
+      listaMedicamentos: []
     }
   },
   methods: {
@@ -47,6 +40,11 @@ export default {
         return item
       })
     }
+  },
+  mounted(){
+    axios.get('http://localhost:50001/medicamentos')
+    .then(res => this.listaMedicamentos = res.data)
+    .catch(erro => console.log(erro))
   }
 }
 </script>
