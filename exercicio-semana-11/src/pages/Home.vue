@@ -13,6 +13,7 @@
       :laboratorio="medicamento.laboratorio" 
       :preco="medicamento.preco" 
       :id="medicamento.id" 
+      :favorito="medicamento.favorito"
     />
   </div>
 </template>
@@ -30,15 +31,20 @@ export default {
     }
   },
   methods: {
-    FavoritarMedicamento(id) {
+    async FavoritarMedicamento(id) {
       // editar o medicamento e marcar como favorito
-      this.listaMedicamentos = this.listaMedicamentos.map(item => {
-        if(item.id == id){
-          item.favorito = !item.favorito
-        }
+      // o filter retorna sempre um array, por isso vamos sempre usar a posição 0
+      let medicamento = this.listaMedicamentos.filter(item => item.id == id)
 
-        return item
-      })
+      if(!!medicamento[0]){
+        try {
+          medicamento[0].favorito = !medicamento[0].favorito
+
+          var result = await axios.put(`http://localhost:50001/medicamentos/${id}`, medicamento[0])
+        } catch (erro) {
+          console.log(erro)
+        }
+      }
     }
   },
   mounted(){
