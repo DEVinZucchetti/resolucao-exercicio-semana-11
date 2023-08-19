@@ -1,6 +1,10 @@
 <template>
-  <router-link to="/novo-medicamento">+ medicamento</router-link>
-  <div>
+  <div class="ma-5 d-flex justify-end">
+    <router-link to="/novo-medicamento">
+      <v-btn title="Adicionar novo medicamento" variant="outlined" color="success">+ medicamento</v-btn>
+    </router-link>
+  </div>
+  <div class="d-flex mx-5">
     <CardMedicamento 
       v-for="medicamento in listaMedicamentos" 
       :key="medicamento.id" 
